@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReelVision</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha384-xxx" crossorigin="anonymous">
+
+</head>
+<body>
+<section id="main">
+  <div id="header">
+    <a href="{% url 'home' %}">
+        <div class="logo">
+            <img src="{% static 'images/ReelVision.svg' %}" >
+        </div>
+    </a>
+
+        <div class="center"></div>
+    <div class="center"></div>
+
+    <div class="right">
+        <div class="box">
+            <div class="sign-box">
+                <div class="menu-item">
+                    <a href="{% url 'funding:funding_home' %}" class="main-link">REEL</a>
+                    <div class="dropdown">
+                        <a href="{% url 'funding:upload_funding_movie' %}">Upload Funding movie</a>
+                        <a href="{% url 'funding:movie_list' %}">Movie List</a>
+                    </div>
+                </div>
+                <p>|</p>
+                <div class="menu-item">
+                    <a href="{% url 'streaming:streaming_home' %}" class="main-link">VISION</a>
+                    <div class="dropdown">
+                        <a href="{% url 'streaming:upload_streaming_movie' %}">Upload Streaming movie</a>
+                        <a href="{% url 'streaming:streaming_movie_list' %}">Movie List</a>
+                    </div>
+                </div>
+                <p>|</p>
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'mypage:mypage' %}">MyPage</a>
+                    <p>|</p>
+                    <a href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <a href="{% url 'signup' %}">SIGN-UP</a>
+                    <p>|</p>
+                    <a href="{% url 'signin' %}">SIGN-IN</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div id="intro">
+         <img src="{% static 'images/background.jpg' %}" alt="Background" class="background-image">
+        <div class="banner-text">
+            <h1>ReelVision:</h1>
+            <p>그들의 비전을 필름으로, 영화로 만들다.</p>
+            <a href="{% url 'streaming:streaming_movie_list' %}" id="archive-button">Show Archive</a>
+        </div>
+    </div>
+
+    <div class="box-title">펀딩중인 작품
+        <a href="{% url 'funding:funding_home' %}" class="add-funding-btn">+</a>
+    </div>
+
+<div id="box">
+    {% for movie in movies %}
+    <a href="{% url 'funding:movie_detail' movie_id=movie.f_id %}" class="block">
+        {% if movie.image_data %}
+        <img src="data:image/jpeg;base64,{{ movie.image_data }}" alt="영화 포스터" class="poster-image">
+        {% else %}
+        <img src="{% static 'images/default-poster.jpg' %}" alt="기본 포스터" class="poster-image">
+        {% endif %}
+        <div class="info">
+            <h3 class="info-title">{{ movie.title }}</h3>
+            <p class="info-description">{{ movie.summary }}</p>
+            <p class="info-cast">등장인물: {{ movie.actors|join:", " }}</p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+</section>
+
+<footer id="footer">
+    <div class="footer-content">
+        <p>© 2024 ReelVision | OSSProj | Team 2</p>
+    </div>
+</footer>
+<script>
+    document.querySelectorAll('.menu-item').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        const dropdown = item.querySelector('.dropdown');
+        if (dropdown) dropdown.style.display = 'block';  // 호버 시 드롭다운 보이기
+    });
+
+    item.addEventListener('mouseleave', () => {
+        const dropdown = item.querySelector('.dropdown');
+        if (dropdown) dropdown.style.display = 'none';  // 마우스를 벗어나면 드롭다운 숨기기
+    });
+});
+
+</script>
+
+</body>
+
+
+</html>

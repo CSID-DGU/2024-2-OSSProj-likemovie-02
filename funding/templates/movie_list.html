@@ -1,0 +1,125 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReelVision - Movie List</title>
+    <link rel="stylesheet" href="{% static 'css/movie_list.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<section id="main">
+    <div id="header">
+        <a href="{% url 'home' %}">
+            <div class="logo">
+                <img src="{% static 'images/ReelVision.svg' %}" >
+            </div>
+        </a>
+
+        <div class="center"></div>
+        <div class="right">
+            <div class="box">
+                <div class="sign-box">
+                    <div class="menu-item">
+                        <a href="{% url 'funding_movie_page' %}" class="main-link">REEL</a>
+                        <div class="dropdown">
+                            <a href="{% url 'funding:upload_funding_movie' %}">Upload Funding movie</a>
+                            <a href="{% url 'funding:movie_list' %}">Movie List</a>
+                        </div>
+                    </div>
+                    <p>|</p>
+                    <div class="menu-item">
+                        <a href="{% url 'streaming_movie_page' %}" class="main-link">VISION</a>
+                        <div class="dropdown">
+                            <a href="{% url 'streaming:upload_streaming_movie' %}">Upload Streaming movie</a>
+                            <a href="{% url 'streaming:streaming_movie_list' %}">Movie List</a>
+                        </div>
+                    </div>
+                    <p>|</p>
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'mypage:mypage' %}">MyPage</a>
+                        <p>|</p>
+                        <a href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                        <a href="{% url 'signup' %}">SIGN-UP</a>
+                        <p>|</p>
+                        <a href="{% url 'signin' %}">SIGN-IN</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main">
+        <section class="main-header">
+            <h1 class="section-title">Funding Movie</h1>
+            <select name="list" class="sort-select">
+                <option value="1">작성일자순</option>
+                <option value="2">마감일자순</option>
+            </select>
+        </section>
+
+        <section class="movie-grid">
+            {% if movies %}
+        {% for movie in movies %}
+        <div class="movie-card" onclick="toggleCard(this)">
+            <div class="movie-card-inner">
+                <!-- 카드 앞면 -->
+                <div class="movie-card-front">
+                    <img
+                        src="{% if movie.poster_image_id %}{% url 'funding:get_poster_image' poster_id=movie.poster_image_id %}{% else %}{% static 'images/default-poster.jpg' %}{% endif %}"
+                        alt="{{ movie.title }} Poster"
+                        class="movie-poster">
+                </div>
+                <!-- 카드 뒷면 -->
+                <div class="movie-card-back">
+                       <img src="{% url 'streaming:streaming_movie_poster' poster_id=movie.poster_image_id %}"
+                             alt="{{ movie.title }} Poster"
+                             class="background-poster">
+                    <div class="movie-info">
+                        <h2>{{ movie.title }}</h2>
+                        <p>감독: {{ movie.creator }}</p>
+                        <p>장르: {{ movie.genre|join:', ' }}</p>
+                        <p id="running_time">러닝타임: {{ movie.time}}분</p>
+
+
+                        <a href="{% url 'funding:movie_detail' movie_id=movie.f_id %}" class="button" id="detail_button">상세 정보</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>현재 업로드된 영화가 없습니다.</p>
+    {% endif %}
+        </section>
+    </main>
+</section>
+    <footer id="footer">
+        <div class="footer-content">
+            <p>© 2024 ReelVision | OSSProj | Team 2</p>
+        </div>
+    </footer>
+
+<script>
+    let selectedCard = null;
+
+    function toggleCard(cardElement) {
+        if (selectedCard && selectedCard !== cardElement) {
+            selectedCard.classList.remove("flipped");
+            selectedCard.style.zIndex = 1;
+        }
+        cardElement.classList.toggle("flipped");
+        selectedCard = cardElement.classList.contains("flipped") ? cardElement : null;
+        if (selectedCard) {
+            selectedCard.style.zIndex = 1000;
+        } else {
+            cardElement.style.zIndex = 1;
+        }
+    }
+</script>
+
+</body>
+</html>

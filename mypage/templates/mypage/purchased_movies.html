@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchased Movies</title>
+</head>
+<body>
+        <h2>Purchased Streaming Movies</h2>
+
+        {% if movies %}
+            <ul>
+                {% for movie in movies %}
+                    <li>
+                        <strong>Title:</strong> {{ movie.movie_title }}<br>
+                        <strong>Amount:</strong> {{ movie.amount }}<br>
+                        <strong>Order Date:</strong> {{ movie.order_date|date:"Y-m-d" }}<br>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You haven't purchased any movies yet.</p>
+{% endif %}
+</body>
+</html>

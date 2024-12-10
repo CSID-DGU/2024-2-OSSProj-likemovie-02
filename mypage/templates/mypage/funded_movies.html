@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funded Movies</title>
+</head>
+<body>
+    <h1>Funded Movies</h1>
+
+    {% if funded_movies %}
+        <ul>
+            {% for movie in funded_movies %}
+                <li>
+                    <strong>Movie Title:</strong> {{ movie.movie_title }}<br>
+                    <strong>Order Name:</strong> {{ movie.order_name }}<br>
+                    <strong>Payment Type:</strong> {{ movie.payment_type }}<br>
+                    <strong>Amount:</strong> {{ movie.amount }}<br>
+                    <strong>Status:</strong> {{ movie.status }}<br>
+                    <strong>Order Date:</strong> {{ movie.order_date|date:"Y-m-d H:i:s" }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You haven't funded any movies yet.</p>
+    {% endif %}
+</body>
+</html>

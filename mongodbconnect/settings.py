@@ -9,6 +9,17 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+import os
+from pathlib import Path
+from dotenv import load_dotenv
+from pymongo import MongoClient
+from dotenv import load_dotenv
+
+load_dotenv()  # .env 파일 로드
+
+MONGO_DB_URL = os.getenv('MONGO_DB_URL')
+MONGO_DB_NAME = os.getenv('MONGO_DB_NAME')
+
 
 from pathlib import Path
 
@@ -20,12 +31,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-120fxkrq&cqq*keymo7@4&5zcu8lbwq-mxopsn^ui(b)!fko6p'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+MONGO_DB_URL = os.getenv('MONGO_DB_URL')
+MONGO_DB_NAME = os.getenv('MONGO_DB_NAME')
+
 
 
 # Application definition
@@ -37,8 +52,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp',
+    'main_page',
+    'streaming',
+    'funding',
+    'rest_framework',
+    'common',
+    'mypage',
+    'payments',
+
 ]
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -48,6 +73,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'common.middleware.MongoDBUserMiddleware'
+
 ]
 
 ROOT_URLCONF = 'mongodbconnect.urls'
@@ -75,14 +102,16 @@ WSGI_APPLICATION = 'mongodbconnect.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-        'default': {
-            'ENGINE': 'djongo',
-            'NAME': 'mongodatabase',
-            'ENFORCE_SCHEMA': False,
-            'CLIENT': {
-                'host': 'mongodb+srv://jklas187:<password>@likemovie.toohv.mongodb.net/?retryWrites=true&w=majority&appName=LikeMovie'
-            }
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': MONGO_DB_NAME,
+        'ENFORCE_SCHEMA': False,
+        'CLIENT': {
+            'host': MONGO_DB_URL,
+            'ssl': True,
+            'tls': True
         }
+    }
 }
 
 
@@ -119,10 +148,56 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-
+#import os
 STATIC_URL = 'static/'
 
+'''STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # 프로젝트 내 static 디렉토리 경로
+]'''
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # 배포용 정적 파일 경로
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# settings.py
+import os
+from dotenv import load_dotenv
+from pymongo import MongoClient
+
+
+
+
+# MongoDB 연결 설정
+MONGO_DB_URL = os.getenv('MONGO_DB_URL')
+MONGO_DB_NAME = os.getenv('MONGO_DB_NAME')
+
+# MongoDB 클라이언트 생성
+client = MongoClient(MONGO_DB_URL)
+mongo_db = client[MONGO_DB_NAME]
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # SMTP 서버 주소
+EMAIL_PORT = 587  # SMTP 서버 포트
+EMAIL_USE_TLS = True  # TLS 사용 여부
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')  # 이메일 계정
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  # 이메일 비밀번호
+
+
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_NAME = 'sessionid'
+SESSION_COOKIE_AGE = 600  # 2주 (초 단위)
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True# 브라우저 닫아도 세션 유지
+SESSION_SAVE_EVERY_REQUEST = True  # 요청마다 세션 저장
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+LOGOUT_REDIRECT_URL = 'home'
+
+CLIENT_KEY = os.getenv('CLIENT_KEY')
+
