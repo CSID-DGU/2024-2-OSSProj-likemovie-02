@@ -20,8 +20,8 @@
   졸업영화는 대부분 사비로 제작비용을 충당하고, 나머지는 크라우드 펀딩 플랫폼으로부터 펀딩을 받아서 제작되고 있다. 하지만 막상 펀딩은 제작비용의 많은 비율을 차지하지 않고 있다. 비용에 대한 갈증이 조금이나마 해소가 된다면 졸업영화의 퀄리티가 높아지고 그것이 곧 졸업영화에 대한 관심으로 이어질 수 있을 것이라고 생각한다.
 
 ## <선행사례와의 비교>
-![선행사례 비교](https://github.com/user-attachments/assets/e680a2ef-a4c6-4d9e-abfb-159506b7a6e7)
 
+![선행사례 비교](https://github.com/user-attachments/assets/e680a2ef-a4c6-4d9e-abfb-159506b7a6e7)
 
 # 2. Team Members (팀원 및 팀 소개)
 
@@ -75,6 +75,7 @@
 <br/>
 
 # 4. Technology Stack (기술 스택)
+
 <div align=center> 
   <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> 
   <img src="https://img.shields.io/badge/django-092E20?style=for-the-badge&logo=django&logoColor=white"> 
@@ -99,4 +100,18 @@
   <br>
 </div>
 
+<br/>
+<br/>
+
+# 5. 관련 자료
+
+- 회의록(https://github.com/CSID-DGU/2024-2-OSSProj-likemovie-02/tree/main/Doc/%ED%9A%8C%EC%9D%98%EB%A1%9D)
+- 시연영상(https://github.com/CSID-DGU/2024-2-OSSProj-likemovie-02/tree/main/Doc/%EC%8B%9C%EC%97%B0%EC%98%81%EC%83%81)
+- 보고서
+  - [수행계획서](https://github.com/CSID-DGU/2024-2-OSSProj-likemovie-02/blob/main/Doc/%5B2%EC%A1%B0%5D%20%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4SW%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%88%98%ED%96%89%EA%B3%84%ED%9A%8D%EC%84%9C.pdf)
+  - [중간보고서](https://github.com/CSID-DGU/2024-2-OSSProj-likemovie-02/blob/main/Doc/%5B2%EC%A1%B0%5D%20%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4SW%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EC%A4%91%EA%B0%84%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf)
+  - [최종보고서]()
+- 발표자료 (https://github.com/CSID-DGU/2024-2-OSSProj-Running-Machines-04/blob/main/doc/241119_%EC%A4%91%EA%B0%84%EB%B3%B4%EA%B3%A0%EC%84%9C/Running%20Machines_04%20%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4SW%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%A4%91%EA%B0%84%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf)
+
+<br/>
 <br/>
