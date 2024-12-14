@@ -1,4 +1,5 @@
 [![ReelVision](https://github.com/user-attachments/assets/148ddd24-061a-4791-a571-06c624f01f31)](http://54.252.232.89:8000/)
+- 로고 클릭시 사이트로 이동합니다
 
 <br/>
 <br/>
