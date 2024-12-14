@@ -105,13 +105,13 @@
 
 # 5. 관련 자료
 
-- 회의록(https://github.com/CSID-DGU/2024-2-OSSProj-likemovie-02/tree/main/Doc/%ED%9A%8C%EC%9D%98%EB%A1%9D)
-- 시연영상(https://github.com/CSID-DGU/2024-2-OSSProj-likemovie-02/tree/main/Doc/%EC%8B%9C%EC%97%B0%EC%98%81%EC%83%81)
+- [회의록(]https://github.com/CSID-DGU/2024-2-OSSProj-likemovie-02/tree/main/Doc/%ED%9A%8C%EC%9D%98%EB%A1%9D)
+- [시연영상](https://github.com/CSID-DGU/2024-2-OSSProj-likemovie-02/tree/main/Doc/%EC%8B%9C%EC%97%B0%EC%98%81%EC%83%81)
 - 보고서
   - [수행계획서](https://github.com/CSID-DGU/2024-2-OSSProj-likemovie-02/blob/main/Doc/%5B2%EC%A1%B0%5D%20%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4SW%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%88%98%ED%96%89%EA%B3%84%ED%9A%8D%EC%84%9C.pdf)
   - [중간보고서](https://github.com/CSID-DGU/2024-2-OSSProj-likemovie-02/blob/main/Doc/%5B2%EC%A1%B0%5D%20%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4SW%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EC%A4%91%EA%B0%84%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf)
   - [최종보고서]()
-- 발표자료 (https://github.com/CSID-DGU/2024-2-OSSProj-Running-Machines-04/blob/main/doc/241119_%EC%A4%91%EA%B0%84%EB%B3%B4%EA%B3%A0%EC%84%9C/Running%20Machines_04%20%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4SW%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%A4%91%EA%B0%84%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf)
+- [발표자료](https://github.com/CSID-DGU/2024-2-OSSProj-Running-Machines-04/blob/main/doc/241119_%EC%A4%91%EA%B0%84%EB%B3%B4%EA%B3%A0%EC%84%9C/Running%20Machines_04%20%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4SW%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%A4%91%EA%B0%84%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf)
 
 <br/>
 <br/>
