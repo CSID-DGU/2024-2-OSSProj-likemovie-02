@@ -216,7 +216,9 @@
   
   <img src="https://img.shields.io/badge/mongoDB-47A248?style=for-the-badge&logo=MongoDB&logoColor=white">
   <img src="https://img.shields.io/badge/mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white">
-  <img src="https://img.shields.io/badge/amazone s3-569A31?style=for-the-badge&logo=amazone s3&logoColor=white">
+  <img src="https://img.shields.io/badge/amazone web services-569A31?style=for-the-badge&logo=amazone web services&logoColor=white">
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white">
+  
   
   <br>
   
